@@ -1,0 +1,46 @@
+{
+  "name": "rewardly-merchant",
+  "version": "1.0.0",
+  "description": "Rewardly merchant web application",
+  "main": "./src/index.js",
+  "scripts": {
+    "prestart": "rimraf .tmp && rimraf dist",
+    "start": "webpack-dev-server",
+    "prebuild": "npm run prestart",
+    "build": "webpack -p",
+    "test": "npm run prestart && karma karma.conf.js"
+  },
+  "author": "Achmad Mahardi <achmad@mahardi.me>",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^6.3.1",
+    "pubnub": "^3.7.20",
+    "vue": "^1.0.15",
+    "vue-router": "^0.7.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-runtime": "^6.4.3",
+    "babel-preset-es2015": "^6.3.13",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.7.1",
+    "karma": "^0.13.19",
+    "postcss-loader": "^0.8.0",
+    "rimraf": "^2.5.0",
+    "style-loader": "^0.13.0",
+    "vue-hot-reload-api": "^1.2.2",
+    "vue-html-loader": "^1.1.0",
+    "vue-loader": "^8.0.2",
+    "vue-style-loader": "^1.0.0",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-html-plugin": "^0.1.1"
+  },
+  "standard": {
+    "globals": [
+      "DEBUG"
+    ]
+  }
+}
