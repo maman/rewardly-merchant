@@ -1,0 +1,66 @@
+@value bodyBackground, accentColor from '../styles/colors.css';
+@value globalRadius, globalPadding, topbar from '../styles/metrics.css';
+
+/**
+ * Content Page
+ */
+.content-page {
+  margin-top: globalPadding;
+  background: bodyBackground;
+  border-top-left-radius: globalRadius;
+  .title-bar {
+    height: calc(topbar - globalPadding);
+    .title-bar--title {
+      margin: 0;
+      padding: 20px globalPadding;
+      font-size: 1.8rem;
+    }
+  }
+  .content {
+    min-height: calc(100vh - topbar);
+  }
+  .hero {
+    background: accentColor;
+    height: 400px;
+    color: bodyBackground;
+  }
+}
+
+/**
+ * Top Bar
+ */
+.topbar {
+  padding: globalPadding;
+  &:: {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .topbar--title {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  .topbar--subtitle {
+    font-size: .8rem;
+  }
+  .topbar--main {
+    float: left;
+  }
+  .topbar--widget {
+    float: right;
+    padding-top: globalPadding;
+  }
+  .topbar--main, .topbar--widget {
+    width: 100%;
+    text-align: center;
+  }
+  @media screen and (min-width: 769px) {
+    .topbar--main, .topbar--widget {
+      width: auto;
+      text-align: left;
+    }
+    .topbar--widget {
+      padding-top: 0;
+    }
+  }
+}

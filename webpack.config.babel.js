@@ -6,7 +6,7 @@ import pkg from './package.json'
 
 const src = path.join(__dirname, './src')
 const banner = `Rewardly Merchant v${ pkg.version }—built on ${ Date.now() }`
-const cssLoaders = 'style!css?modules&importLoaders=1&sourceMap!postcss'
+const cssLoaders = 'css!postcss'
 const filename = `rewardly-v${ pkg.version }.[hash]`
 
 let config = {
@@ -31,13 +31,21 @@ let config = {
         test: /\.js$/,
         exclude: /node_modules|vue\/dist|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
         loader: 'babel'
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)(\?v=[0-9]\.[0-9]\.[0-9])$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: '[name].[ext]?[hash]'
+        }
       }
     ]
   },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, [ /moment$/ ]),
     new HtmlPlugin({
-      // template: path.join(src, 'index.html'),
+      favicon: path.join(src, 'favicon.ico'),
       title: `Rewardly Merchant v${ pkg.version }`,
       inject: true
     }),
@@ -45,13 +53,22 @@ let config = {
       DEBUG: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
     })
   ],
-  postcss: () => {
-    return [require('autoprefixer')]
-  },
   vue: {
-    loaders: {
-      js: 'babel',
-      css: cssLoaders
+    postcss: () => {
+      return [
+        require('postcss-import', {
+          onImport: files => files.forEach(file => file.addDependency),
+          path: [ src ]
+        }),
+        require('postcss-custom-media'),
+        require('postcss-custom-properties'),
+        require('postcss-calc'),
+        require('postcss-nested'),
+        require('postcss-color-function'),
+        require('postcss-discard-comments'),
+        require('autoprefixer'),
+        require('lost')
+      ]
     }
   }
 }
