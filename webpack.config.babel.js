@@ -5,9 +5,9 @@ import path from 'path'
 import pkg from './package.json'
 
 const src = path.join(__dirname, './src')
-const banner = `Rewardly Merchant v${ pkg.version }—built on ${ Date.now() }`
+const banner = `Rewardly Merchant v${pkg.version}—built on ${Date.now()}`
 const cssLoaders = 'css!postcss'
-const filename = `rewardly-v${ pkg.version }.[hash]`
+const filename = `rewardly-v${pkg.version}.[hash]`
 
 let config = {
   target: 'web',
@@ -19,7 +19,7 @@ let config = {
     path: path.join(__dirname, '.tmp'),
     pathInfo: true,
     publicPath: '/',
-    filename: `${ filename }.js`
+    filename: `${filename}.js`
   },
   module: {
     loaders: [
@@ -46,7 +46,7 @@ let config = {
     new webpack.IgnorePlugin(/^\.\/locale$/, [ /moment$/ ]),
     new HtmlPlugin({
       favicon: path.join(src, 'favicon.ico'),
-      title: `Rewardly Merchant v${ pkg.version }`,
+      title: `Rewardly Merchant v${pkg.version}`,
       inject: true
     }),
     new webpack.DefinePlugin({
@@ -57,7 +57,7 @@ let config = {
     postcss: () => {
       return [
         require('postcss-import', {
-          onImport: files => files.forEach(file => file.addDependency),
+          onImport: (files) => files.forEach((file) => file.addDependency),
           path: [ src ]
         }),
         require('postcss-custom-media'),
@@ -93,7 +93,7 @@ if (process.env.NODE_ENV !== 'production') {
     css: ExtractTextPlugin.extract(cssLoaders)
   })
   config.plugins = [
-    new ExtractTextPlugin(`${ filename }.css`),
+    new ExtractTextPlugin(`${filename}.css`),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),

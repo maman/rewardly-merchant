@@ -1,4 +1,4 @@
-import authApi from '../../api/auth'
+import authApi from '../../datasources/auth'
 
 export const AUTH_REQUEST = 'AUTH_REQUEST'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS'
