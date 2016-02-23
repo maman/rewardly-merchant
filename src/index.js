@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Main from './components/Main.vue'
-import HomeView from './components/HomeView.vue'
-import RegisterView from './components/RegisterView.vue'
-import LoginView from './components/LoginView.vue'
+
+import HomeView from './components/pages/HomeView.vue'
+import RegisterView from './components/pages/RegisterView.vue'
+import LoginView from './components/pages/LoginView.vue'
+
 import DashboardView from './components/DashboardView.vue'
 import TransactionView from './components/TransactionView.vue'
 import SettingsView from './components/SettingsView.vue'

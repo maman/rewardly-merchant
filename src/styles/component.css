@@ -8,6 +8,7 @@
   margin-top: globalPadding;
   background: bodyBackground;
   border-top-left-radius: globalRadius;
+  border-top-right-radius: globalRadius;
   .title-bar {
     height: calc(topbar - globalPadding);
     .title-bar--title {

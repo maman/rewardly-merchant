@@ -21,18 +21,18 @@
           :data="heroChart"
           :options="heroOptions"></graph>
       </div>
-      <div class="main flex flex-wrap py3 px2">
-        <div class="graph col-12 md-col-4">
+      <div class="main flex flex-wrap py4 px2">
+        <div class="graph col-12 md-col-4 py2 graph--text--only">
           <div class="graph-wrap">
-            <h1>tes</h1>
+            div.chart
           </div>
         </div>
-        <div class="graph col-12 md-col-4">
+        <div class="graph col-12 md-col-4 py2 graph--text--only">
           <div class="graph-wrap">
-            <h1>tes</h1>
+            div.chart
           </div>
         </div>
-        <div class="graph col-12 md-col-4">
+        <div class="graph col-12 md-col-4 py2 graph--text--only">
           <div class="graph-wrap">
             div.chart
           </div>
@@ -98,5 +98,9 @@
     border-radius: globalRadius;
     box-shadow: 0 0 15px rgba(0, 0, 0, .15);
     min-height: 150px;
+  }
+
+  .graph--text--only {
+
   }
 </style>

@@ -1,8 +1,6 @@
 <template>
-  <div class="application flex flex-column">
-    <div class="flex-auto sm-flex">
-      <router-view></router-view>
-    </div>
+  <div class="application flex">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -87,6 +85,11 @@
 
   .application {
     min-height: 100vh;
+    min-width: 400px;
     background-color: bodyBackground;
+    flex-direction: column;
+    /*@media screen and (min-width: 641px) {
+      flex-direction: row;
+    }*/
   }
 </style>

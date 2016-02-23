@@ -43,6 +43,9 @@
     "lost": "^6.7.0",
     "normalize.css": "^3.0.3",
     "pubnub": "^3.7.20",
+    "redux": "^3.3.1",
+    "redux-thunk": "^1.0.3",
+    "revue": "^2.0.0",
     "vue": "^1.0.15",
     "vue-router": "^0.7.5"
   },

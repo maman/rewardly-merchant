@@ -1,18 +1,15 @@
-const baseUrl = 'http://api.rewardly.com'
+// const baseUrl = 'http://api.rewardly.com'
+const baseUrl = 'http://private-c8d27-rewardly.apiary-mock.com'
 
-const endpoint = {
-  auth: `${ baseUrl }/auth`,
-  register: `${ baseUrl }/register`,
-  profile: `${ baseUrl }/merchant`,
-  gift: `${ baseUrl }/merchant/gift`,
-  discount: `${ baseUrl }/merchant/discount`,
-  transaction: `${ baseUrl }/merchant/transaction`,
-  search: `${ baseUrl }/merchant/search`
-}
+let endpoint = Object.freeze({
+  auth: `${baseUrl}/auth`,
+  merchant: `${baseUrl}/merchant`,
+  transaction: `${baseUrl}/transaction`
+})
 
-const pubnub = {
+let pubnub = Object.freeze({
   publish_key: '',
   subscribe_key: ''
-}
+})
 
 export { endpoint, pubnub }
