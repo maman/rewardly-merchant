@@ -1,5 +1,5 @@
-import vue from 'vue'
 import Revue from 'revue'
+import vue from 'vue'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './flux/reducers'
