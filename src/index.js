@@ -3,15 +3,16 @@ import Router from 'vue-router'
 
 import Main from './components/Main.vue'
 
-import HomeView from './components/pages/HomeView.vue'
-import RegisterView from './components/pages/RegisterView.vue'
-import LoginView from './components/pages/LoginView.vue'
+import HomeView from './components/layouts/HomeView.vue'
+import RegisterView from './components/layouts/RegisterView.vue'
+import LoginView from './components/layouts/LoginView.vue'
 
-import DashboardView from './components/DashboardView.vue'
-import TransactionView from './components/TransactionView.vue'
-import SettingsView from './components/SettingsView.vue'
-import ProfileView from './components/ProfileView.vue'
-import GiftView from './components/GiftView.vue'
+import DashboardView from './components/pages/DashboardView.vue'
+import TransactionView from './components/pages/TransactionView.vue'
+import MemberView from './components/pages/MemberView.vue'
+import SettingsView from './components/pages/SettingsView.vue'
+import ProfileView from './components/pages/ProfileView.vue'
+import GiftView from './components/pages/GiftView.vue'
 
 Vue.use(Router)
 
@@ -26,9 +27,13 @@ engine.map({
         name: 'dashboard',
         component: DashboardView
       },
-      '/transaction/:filterOpts': {
+      '/transaction': {
         name: 'transaction',
         component: TransactionView
+      },
+      '/members': {
+        name: 'member',
+        component: MemberView
       },
       '/settings': {
         name: 'settings',

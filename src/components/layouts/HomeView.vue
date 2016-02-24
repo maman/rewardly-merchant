@@ -7,14 +7,24 @@
       <li class="sidebar--menu-li">
         <a v-link="{ 'name': 'dashboard' }"
           class="menu btn block mb1 silver">
-          <i class="menu--icon ibm-icon ibm-dashboard"></i>
           <span class="menu--content">Dashboard</span>
+        </a>
+      </li>
+      <li class="sidebar--menu-li">
+        <a v-link="{ 'name': 'transaction' }"
+          class="menu btn block mb1 silver">
+          <span class="menu--content">Transactions</span>
+        </a>
+      </li>
+      <li class="sidebar--menu-li">
+        <a v-link="{ 'name': 'member' }"
+          class="menu btn block mb1 silver">
+          <span class="menu--content">Members</span>
         </a>
       </li>
       <li class="sidebar--menu-li">
         <a v-link="{ 'name': 'settings' }"
           class="menu btn block mb1 silver">
-          <i class="menu--icon ibm-icon ibm-settings"></i>
           <span class="menu--content">Settings</span>
         </a>
       </li>

@@ -43,7 +43,7 @@
 </template>
 
 <script>
-  import Graph from './fragments/Graph.vue'
+  import Graph from '../fragments/Graph.vue'
 
   export default {
     name: 'DashboardView',
@@ -76,11 +76,11 @@
   }
 </script>
 
-<style src="../styles/component.css"></style>
+<style src="../../styles/component.css"></style>
 
 <style scoped>
-  @value globalPadding, globalRadius from '../styles/metrics.css';
-  @value bodyBackground from '../styles/colors.css';
+  @value globalPadding, globalRadius from '../../styles/metrics.css';
+  @value bodyBackground from '../../styles/colors.css';
 
   .main {
     background-color: bodyBackground;

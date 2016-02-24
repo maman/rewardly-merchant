@@ -30,11 +30,6 @@
   @import 'basscss-responsive-states';
   @import 'basscss-grid';
   @import 'flex-object';
-  @import 'basscss-borders';
-  @import 'basscss-colors';
-  @import 'basscss-background-colors';
-  @import 'basscss-defaults';
-  @import 'ibm-icon-font/css/ibmicons.css';
   @lost flexbox flex;
 
   :root {
