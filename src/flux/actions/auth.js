@@ -23,10 +23,10 @@ export function authLoading () {
   }
 }
 
-export function authLoaded (authData) {
+export function authLoaded (data) {
   return {
     type: AUTH_SUCCESS,
-    authData
+    data
   }
 }
 
@@ -36,5 +36,3 @@ export function authFailed (error) {
     error
   }
 }
-
-export function auth

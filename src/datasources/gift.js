@@ -38,11 +38,24 @@ export default {
    * @param  {Object} gift       Gift object
    * @return {Promise}
    */
-  edit: (merchantId, id, gift) => {
+  update: (merchantId, id, gift) => {
     return http({
       method: 'POST',
       url: `${constructGiftURL(merchantId)}/${id}`
     }, gift)
+  },
+
+  /**
+   * Delete gift on merchant
+   * @param  {Number} merchantId Merchant ID to delete gift to
+   * @param  {Number} id         Gift ID to delete
+   * @return {Promise}
+   */
+  delete: (merchantId, id) => {
+    return http({
+      method: 'DELETE',
+      url: `${constructGiftURL(merchantId)}/${id}`
+    })
   },
 
   /**

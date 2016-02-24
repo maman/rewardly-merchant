@@ -32,7 +32,7 @@ export default function auth (state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         isFailed: false,
-        user: action.authData
+        user: Object.assign({}, state.user, action.data)
       })
 
     /**
