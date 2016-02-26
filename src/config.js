@@ -1,9 +1,12 @@
 // const baseUrl = 'http://api.rewardly.com'
-const baseUrl = 'http://private-c8d27-rewardly.apiary-mock.com'
+// const baseUrl = 'http://private-c8d27-rewardly.apiary-mock.com'
+const baseUrl = 'http://172.17.34.49:8000'
 
 let endpoint = Object.freeze({
   auth: `${baseUrl}/auth`,
-  merchant: `${baseUrl}/merchant`,
+  check: `${baseUrl}/auth/ecash`,
+  merchant: `${baseUrl}/merchants`,
+  member: `${baseUrl}/member`,
   transaction: `${baseUrl}/transaction`
 })
 

@@ -96,7 +96,7 @@
   }
 </script>
 
-<style src="../../styles/component.css"></style>
+<style src="styles/component.css"></style>
 
 <style scoped>
   @value globalPadding, globalRadius from '../../styles/metrics.css';

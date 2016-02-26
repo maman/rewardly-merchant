@@ -13,7 +13,7 @@ let config = {
   target: 'web',
   cache: true,
   debug: true,
-  devtool: 'cheap-source-map',
+  devtool: 'source-map',
   entry: path.join(src, 'index.js'),
   output: {
     path: path.join(__dirname, '.tmp'),
@@ -50,7 +50,7 @@ let config = {
     new webpack.IgnorePlugin(/^\.\/locale$/, [ /moment$/ ]),
     new HtmlPlugin({
       favicon: path.join(src, 'favicon.ico'),
-      title: `Rewardly Merchant v${pkg.version}`,
+      title: `Rewardly Merchant`,
       inject: true
     }),
     new webpack.DefinePlugin({

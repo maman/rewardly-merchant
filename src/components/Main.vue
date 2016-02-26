@@ -4,6 +4,13 @@
   </div>
 </template>
 
+<script>
+  import { load } from 'vue-google-maps'
+  import { mapsApiKey } from 'config'
+
+  load(mapsApiKey)
+</script>
+
 <style>
   /**
    * Import external libraries
@@ -11,6 +18,7 @@
   @import '../styles/fonts.css';
   @import 'chartist/dist/chartist.min.css';
   @import '../styles/chartist.css';
+  @import 'basscss';
   @import 'basscss-base-reset';
   @import 'basscss-base-forms';
   @import 'basscss-base-tables';
@@ -20,6 +28,7 @@
   @import 'basscss-color-tables';
   @import 'basscss-btn';
   @import 'basscss-btn-primary';
+  @import 'basscss-btn-sizes';
   @import 'basscss-btn-outline';
   @import 'basscss-type-scale';
   @import 'basscss-utility-typography';
@@ -29,6 +38,7 @@
   @import 'basscss-positions';
   @import 'basscss-responsive-states';
   @import 'basscss-grid';
+  @import 'basscss-forms';
   @import 'flex-object';
   @lost flexbox flex;
 

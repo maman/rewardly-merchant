@@ -11,7 +11,7 @@ export function auth (loginData) {
     dispatch(authLoading())
     authApi(loginData)
       .then(({ data }) => {
-        dispatch(authLoaded(data))
+        dispatch(authLoaded(data.data))
       })
       .catch((error) => {
         dispatch(authFailed(error))

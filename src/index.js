@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Validator from 'vue-validator'
 
 import Main from 'components/Main.vue'
 
@@ -17,6 +18,7 @@ import GiftView from 'components/pages/GiftView.vue'
 import { capitalize } from 'utils/utilitybelt'
 
 Vue.use(Router)
+Vue.use(Validator)
 
 let engine = new Router()
 

@@ -1,5 +1,5 @@
 import http from 'axios'
-import { endpoint } from '../config'
+import { endpoint } from 'config'
 
 export default {
   /**
@@ -10,8 +10,9 @@ export default {
   create: (merchant) => {
     return http({
       method: 'POST',
-      url: endpoint.merchant
-    }, merchant)
+      url: endpoint.merchant,
+      data: merchant
+    })
   },
 
   /**
@@ -23,8 +24,9 @@ export default {
   update: (id, merchant) => {
     return http({
       method: 'POST',
-      url: `${endpoint.merchant}/${id}`
-    }, merchant)
+      url: `${endpoint.merchant}/${id}`,
+      data: merchant
+    })
   },
 
   /**

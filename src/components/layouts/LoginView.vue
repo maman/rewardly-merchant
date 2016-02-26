@@ -1,25 +1,33 @@
 <template>
-  <div class="loginbox">
-    <form @submit.prevent="performAuth">
-      <label for="merchant-name">Merchant Name</label>
-      <input type="text"
-        id="merchant-name"
-        name="merchant-name"
-        v-model="loginData.username"
-        lazy>
-      <label for="merchant-password">Password</label>
-      <input type="password"
-        id="merchant-password"
-        name="merchant-password"
-        v-model="loginData.password"
-        lazy>
-      <button type="submit">Login</button>
-    </form>
-    <a v-link="{ 'name': 'register' }">Belum memiliki account? daftar disini</a>
+  <div class="singlebox--wrapper">
+    <div class="singlebox loginbox">
+      <form @submit.prevent="performAuth">
+        <label class="label"
+          for="merchant-name">Merchant Name</label>
+        <input class="input"
+          type="text"
+          id="merchant-name"
+          name="merchant-name"
+          v-model="loginData.username"
+          lazy>
+        <label class="label"
+          for="merchant-password">Password</label>
+        <input class="input"
+          type="password"
+          id="merchant-password"
+          name="merchant-password"
+          v-model="loginData.password"
+          lazy>
+        <button class="btn btn-primary"
+          type="submit">Login</button>
+      </form>
+      <a v-link="{ 'name': 'register' }">Belum memiliki account? daftar disini</a>
+    </div>
   </div>
 </template>
 
 <script>
+  import md5 from 'blueimp-md5'
   import store from 'flux/store'
   import { auth as authAction } from 'flux/actions/auth'
   import { checkAuth } from 'utils/utilitybelt'
@@ -53,6 +61,7 @@
 
     methods: {
       performAuth () {
+        this.loginData.password = md5(this.loginData.password)
         store.dispatch(authAction(this.loginData))
         this.loginData.username = ''
         this.loginData.password = ''
@@ -66,6 +75,8 @@
     }
   }
 </script>
+
+<style src="styles/component.css"></style>
 
 <style scoped>
 

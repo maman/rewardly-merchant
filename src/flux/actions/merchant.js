@@ -68,8 +68,8 @@ export function update (id, merchant) {
   return (dispatch) => {
     dispatch(updateLoading())
     merchantApi.update(id, merchant)
-      .then(({ data }) => {
-        dispatch(updateLoaded(data))
+      .then(() => {
+        dispatch(updateLoaded())
       })
       .catch((error) => {
         dispatch(updateFailed(error))
@@ -83,10 +83,9 @@ export function updateLoading () {
   }
 }
 
-export function updateLoaded (merchant) {
+export function updateLoaded () {
   return {
-    type: MERCHANT_UPDATE_SUCCESS,
-    merchant
+    type: MERCHANT_UPDATE_SUCCESS
   }
 }
 
@@ -108,7 +107,7 @@ export function get (id) {
     dispatch(getLoading())
     merchantApi.get(id)
       .then(({ data }) => {
-        dispatch(getLoaded(data))
+        dispatch(getLoaded(data.data))
       })
       .catch((error) => {
         dispatch(getFailed(error))
@@ -147,7 +146,8 @@ export function transactions (id) {
     dispatch(transactionsLoading())
     merchantApi.getTransactions(id)
       .then(({ data }) => {
-        dispatch(transactionsLoaded(data))
+        dispatch(transactionsLoaded(data.data))
+        // dispatch(transactionsLoaded(transactionLists.transactions)) /** TODO: mocks */
       })
       .catch((error) => {
         dispatch(transactionsFailed(error))
@@ -186,7 +186,8 @@ export function members (id) {
     dispatch(membersLoading())
     merchantApi.getMembers(id)
       .then(({ data }) => {
-        dispatch(membersLoaded(data))
+        dispatch(membersLoaded(data.data))
+        // dispatch(membersLoaded(memberLists.members)) /** TODO: mocks */
       })
       .catch((error) => {
         dispatch(membersFailed(error))

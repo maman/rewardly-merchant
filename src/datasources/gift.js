@@ -27,8 +27,9 @@ export default {
   create: (merchantId, gift) => {
     return http({
       method: 'POST',
-      url: constructGiftURL(merchantId, true)
-    }, gift)
+      url: constructGiftURL(merchantId, true),
+      data: gift
+    })
   },
 
   /**
@@ -41,8 +42,9 @@ export default {
   update: (merchantId, id, gift) => {
     return http({
       method: 'POST',
-      url: `${constructGiftURL(merchantId)}/${id}`
-    }, gift)
+      url: `${constructGiftURL(merchantId)}/${id}`,
+      data: gift
+    })
   },
 
   /**

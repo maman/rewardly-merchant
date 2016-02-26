@@ -73,7 +73,7 @@
   .content {
     background: brandColor;
     padding: 0 globalPadding globalPadding globalPadding;
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: 40em) {
       padding: 0 calc(globalPadding * 5) calc(globalPadding * 5) calc(globalPadding * 5);
     }
   }

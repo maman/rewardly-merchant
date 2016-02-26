@@ -9,6 +9,7 @@ import { endpoint } from '../config'
 export default function (loginData) {
   return http({
     method: 'POST',
-    url: `${endpoint.auth}/login`
-  }, loginData)
+    url: `${endpoint.auth}/merchantlogin`,
+    data: loginData
+  })
 }

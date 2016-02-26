@@ -16,14 +16,20 @@ export default function merchant (state = initialState, action) {
         isLoading: true
       })
 
-    case merchantActions.MERCHANT_CREATE_SUCCESS:
-    case merchantActions.MERCHANT_UPDATE_SUCCESS:
     case merchantActions.MERCHANT_GET_SUCCESS:
       return Object.assign({}, state, {
         isLoading: false,
         isFailed: false,
         message: '',
         merchant: action.merchant
+      })
+
+    case merchantActions.MERCHANT_CREATE_SUCCESS:
+    case merchantActions.MERCHANT_UPDATE_SUCCESS:
+      return Object.assign({}, state, {
+        isLoading: false,
+        isFailed: false,
+        message: ''
       })
 
     case merchantActions.MERCHANT_CREATE_FAILURE:

@@ -1,4 +1,4 @@
-@value bodyBackground, accentColor from '../styles/colors.css';
+@value bodyBackground, accentColor, brandColor from '../styles/colors.css';
 @value globalRadius, globalPadding, topbar from '../styles/metrics.css';
 
 /**
@@ -62,6 +62,24 @@
     }
     .topbar--widget {
       padding-top: 0;
+    }
+  }
+}
+
+/**
+ * Single Boxes
+ */
+.singlebox--wrapper {
+  background-color: brandColor;
+  min-height: 100vh;
+  .singlebox {
+    margin: calc(globalPadding * 3);
+    padding: globalPadding;
+    background-color: bodyBackground;
+    border-radius: globalRadius;
+    @media (min-width: 40em) {
+      width: 40em;
+      margin: calc(globalPadding * 3) auto;
     }
   }
 }

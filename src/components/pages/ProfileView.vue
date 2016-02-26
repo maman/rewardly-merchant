@@ -1,49 +1,59 @@
 <template>
-  <div class="main flex flex-wrap px2">
+  <div class="main flex flex-wrap flex-column px2">
     <h1>Profile</h1>
-    <form @submit.prevent="performEdit">
-      <label for="name">Merchant Name</label>
-      <input type="text"
-        name="name"
-        id="name"
-        v-model="merchant.merchant.name">
-      <label for="description">Merchant Description</label>
-      <textarea name="description"
-        id="description"
-        v-model="merchant.merchant.description"></textarea>
-      <fieldset>
+    <validator name="profileValidator">
+      <form @submit.prevent="performEdit"
+        novalidate>
+        <label class="label"
+          for="name">Merchant Name</label>
+        <input class="input"
+          type="text"
+          name="name"
+          id="name"
+          v-model="merchant.merchant.name">
+        <label class="label"
+          for="description">Merchant Description</label>
+        <textarea class="textarea"
+          rows="4"
+          name="description"
+          id="description"
+          v-model="merchant.merchant.description"></textarea>
         <map :center="merchant.merchant.location"
           :zoom="15"
           style="width: 100%;height: 300px; display: block">
-          <place-input :label="'Find place'"></place-input>
+          <marker :position.sync="merchant.merchant.location"
+            :clickable="false"
+            :draggable="true"></marker>
         </map>
-        <button @click.prevent="locate">Locate me</button>
-      </fieldset>
-      <fieldset>
-        <label for="discount-free">Merchant Discount</label>
-        <input type="text"
+        <button @click.prevent="locate"
+          class="btn btn-primary btn-small mt2 mb2">Locate me</button>
+        <label class="label"
+          for="discount-free">Merchant Discount</label>
+        <input class="input"
+          type="number"
           name="discount-free"
           id="discount-free"
           v-model="merchant.merchant.discount_free">
-        <label for="discount-plus">Merchant Discount (Plus)</label>
-        <input type="text"
+        <label class="label"
+          for="discount-plus">Merchant Discount (Plus)</label>
+        <input class="input"
+          type="number"
           name="discount-plus"
           id="discount-plus"
           v-model="merchant.merchant.discount_premium">
-      </fieldset>
-      <button type="submit">Update details</button>
-    </form>
+        <button type="submit"
+          class="btn btn-primary mb2"
+          v-bind:class="{ 'disabled': !$profileValidator.valid }">Update details</button>
+      </form>
+    </validator>
   </div>
 </template>
 
 <script>
   import store from 'flux/store'
   import { get, update } from 'flux/actions/merchant'
-  import { checkAuth } from 'utils/utilitybelt'
-  import { load, Map, Marker, PlaceInput } from 'vue-google-maps'
-  import { mapsApiKey } from 'config'
-
-  load(mapsApiKey)
+  import { checkAuth, locate as getLocation } from 'utils/utilitybelt'
+  import { Map, Marker, PlaceInput } from 'vue-google-maps'
 
   export default {
     name: 'ProfileView',
@@ -73,25 +83,21 @@
     methods: {
       activate () {
         if (!this.merchant.merchant.id) {
-          return store.dispatch(get(this.auth.user.member_id))
+          return store.dispatch(get(this.auth.user.id))
         }
       },
 
       locate () {
-        if (!navigator.geolocation) {
-          if (DEBUG) console.warn(`[w]::user doesn't wan't us to locate them. fuckit.`)
-          return
-        }
-        navigator.geolocation.getCurrentPosition((position) => {
-          this.merchant.merchant.location.lat = position.coords.latitude
-          this.merchant.merchant.location.lng = position.coords.longitude
+        getLocation(({ coords }) => {
+          this.merchant.merchant.location.lat = coords.lat
+          this.merchant.merchant.location.lng = coords.lng
         }, (error) => {
-          console.log(`error`)
+          if (DEBUG) console.warn(`[e]::cannot get location from users ${error.message}`)
         })
       },
 
       performEdit () {
-        store.dispatch(update(this.auth.user.member_id, this.merchant.merchant))
+        store.dispatch(update(this.auth.user.id, this.merchant.merchant))
       }
     }
   }
