@@ -1,12 +1,12 @@
-import * as authActions from '../actions/auth'
+import * as authActions from 'flux/actions/auth'
 
 const initialState = {
   isLoading: false,
   isFailed: false,
   message: '',
   user: {
-    id: '',
-    user: '',
+    member_id: '',
+    username: '',
     msisdn: '',
     type: ''
   }
@@ -29,10 +29,11 @@ export default function auth (state = initialState, action) {
      * @type {String}
      */
     case authActions.AUTH_SUCCESS:
+      console.log(action)
       return Object.assign({}, state, {
         isLoading: false,
         isFailed: false,
-        user: Object.assign({}, state.user, action.data)
+        user: action.data
       })
 
     /**
@@ -45,6 +46,13 @@ export default function auth (state = initialState, action) {
         isFailed: true,
         message: action.error.text
       })
+
+    /**
+     * Handle AUTH_LOGOUT
+     * @type {String}
+     */
+    case authActions.AUTH_LOGOUT:
+      return Object.assign({}, state, initialState)
 
     default:
       return state

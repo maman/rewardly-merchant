@@ -1,4 +1,4 @@
-import * as giftActions from '../actions/gift'
+import * as giftActions from 'flux/actions/gifts'
 
 const initialState = {
   isLoading: false,
@@ -27,18 +27,8 @@ export default function gift (state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         isFailed: false,
+        message: '',
         gifts: action.data
-      })
-
-    /**
-     * Handle GIFT_LIST_FAILURE
-     * @type {String}
-     */
-    case giftActions.GIFT_LIST_FAILURE:
-      return Object.assign({}, state, {
-        isLoading: false,
-        isFailed: true,
-        message: action.error.text
       })
 
     /**
@@ -59,17 +49,6 @@ export default function gift (state = initialState, action) {
         isLoading: false,
         isFailed: false,
         gifts: [action.gift, ...state.gifts]
-      })
-
-    /**
-     * Handle GIFT_CREATE_FAILURE
-     * @type {String}
-     */
-    case giftActions.GIFT_CREATE_FAILURE:
-      return Object.assign({}, state, {
-        isLoading: false,
-        isFailed: true,
-        message: action.error.text
       })
 
     /**
@@ -98,17 +77,6 @@ export default function gift (state = initialState, action) {
       })
 
     /**
-     * Handle GIFT_UPDATE_FAILURE
-     * @type {String}
-     */
-    case giftActions.GIFT_UPDATE_FAILURE:
-      return Object.assign({}, state, {
-        isLoading: false,
-        isFailed: true,
-        message: action.error.text
-      })
-
-    /**
      * Handle GIFT_DELETE_REQUEST
      * @type {String}
      */
@@ -131,9 +99,12 @@ export default function gift (state = initialState, action) {
       })
 
     /**
-     * Handle GIFT_DELETE_FAILURE
+     * Handle GIFT_{LIST|CREATE|UPDATE|DELETE}_FAILURE
      * @type {String}
      */
+    case giftActions.GIFT_LIST_FAILURE:
+    case giftActions.GIFT_CREATE_FAILURE:
+    case giftActions.GIFT_UPDATE_FAILURE:
     case giftActions.GIFT_DELETE_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,

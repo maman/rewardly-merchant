@@ -1,3 +1,5 @@
+/*eslint no-extend-native: [0]*/
+
 /**
  * Polyfill for Array.prototype.includes
  */
@@ -48,14 +50,14 @@ persistence.engine = 'sessionStorage'
 persistence.setEngine = (engineType) => {
   if (engines.includes(engineType)) {
     if (DEBUG) {
-      console.info(`[i]::set persistence engine to ${ engineType }`)
+      console.info(`[i]::set persistence engine to ${engineType}`)
     }
     persistence.engine = engineType
   } else {
     if (DEBUG) {
-      console.error(`[i]::${ engineType } not supported`)
+      console.error(`[i]::${engineType} not supported`)
     }
-    throw new Error(`${ engineType } not supported`)
+    throw new Error(`${engineType} not supported`)
   }
 }
 
@@ -66,14 +68,14 @@ persistence.setEngine = (engineType) => {
  */
 persistence.set = (key, value) => {
   if (DEBUG) {
-    console.info(`[i]::using ${ persistence.engine } for storage engine`)
+    console.info(`[i]::using ${persistence.engine} for storage engine`)
   }
   try {
     window[persistence.engine].setItem(key, JSON.stringify(value))
     return true
   } catch (e) {
     if (DEBUG) {
-      console.error(`[e]::cannot save ${ key } to ${ persistence.engine }: ${ e }`)
+      console.error(`[e]::cannot save ${key} to ${persistence.engine}: ${e}`)
     }
     return false
   }

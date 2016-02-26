@@ -21,6 +21,10 @@ let config = {
     publicPath: '/',
     filename: `${filename}.js`
   },
+  resolve: {
+    root: src,
+    modulesDirectories: ['node_modules', 'src']
+  },
   module: {
     loaders: [
       {

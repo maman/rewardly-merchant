@@ -20,7 +20,7 @@ export default {
    * @param  {Object} merchant Merchant Object
    * @return {Promise}
    */
-  edit: (id, merchant) => {
+  update: (id, merchant) => {
     return http({
       method: 'POST',
       url: `${endpoint.merchant}/${id}`

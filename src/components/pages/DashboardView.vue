@@ -43,11 +43,15 @@
 </template>
 
 <script>
-  import Graph from '../fragments/Graph.vue'
+  import store from 'flux/store'
+  import { checkAuth } from 'utils/utilitybelt'
+  import Graph from 'components/fragments/Graph.vue'
 
   export default {
     name: 'DashboardView',
+
     components: { Graph },
+
     data () {
       return {
         heroChart: {
@@ -71,6 +75,22 @@
           },
           chartPadding: 0
         }
+      }
+    },
+
+    ready () {
+      this.$subscribe('dashboard')
+      if (DEBUG) console.debug(`[i]::current state: ${store.state}`)
+      checkAuth(store.state, () => {
+        this.activate()
+      }, () => {
+        this.$router.go('/login')
+      })
+    },
+
+    methods: {
+      activate () {
+        console.log('hi')
       }
     }
   }

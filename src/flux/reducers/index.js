@@ -2,13 +2,15 @@ import { combineReducers } from 'redux'
 import auth from './auth'
 import gifts from './gifts'
 import members from './members'
-import settings from './settings'
+import merchant from './merchant'
+import dashboard from './dashboard'
 import transactions from './transactions'
 
 export default combineReducers({
   auth,
   gifts,
   members,
-  settings,
+  merchant,
+  dashboard,
   transactions
 })

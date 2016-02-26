@@ -1,4 +1,4 @@
-import giftApi from '../../datasources/gift'
+import giftApi from 'datasources/gift'
 
 export const GIFT_LIST_REQUEST = 'GIFT_LIST_REQUEST'
 export const GIFT_LIST_SUCCESS = 'GIFT_LIST_SUCCESS'

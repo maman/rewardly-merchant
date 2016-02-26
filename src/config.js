@@ -12,4 +12,6 @@ let pubnub = Object.freeze({
   subscribe_key: ''
 })
 
-export { endpoint, pubnub }
+let mapsApiKey = 'AIzaSyCSMqOSH6TApiFQ3VU2NvtGl4TfGt4Tm-U'
+
+export { endpoint, pubnub, mapsApiKey }
