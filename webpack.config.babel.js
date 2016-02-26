@@ -37,12 +37,8 @@ let config = {
         loader: 'babel'
       },
       {
-        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)(\?v=[0-9]\.[0-9]\.[0-9])$/,
-        loader: 'url',
-        query: {
-          limit: 10000,
-          name: '[name].[ext]?[hash]'
-        }
+        test: /\.(gif|png|jpe?g)$/,
+        loader: 'file?hash=sha512&digest=hex&name=[path][hash].[ext]'
       }
     ]
   },
@@ -50,7 +46,7 @@ let config = {
     new webpack.IgnorePlugin(/^\.\/locale$/, [ /moment$/ ]),
     new HtmlPlugin({
       favicon: path.join(src, 'favicon.ico'),
-      title: `Rewardly Merchant`,
+      title: 'Rewardly Merchant',
       inject: true
     }),
     new webpack.DefinePlugin({
@@ -93,7 +89,7 @@ if (process.env.NODE_ENV !== 'production') {
   config.devtool = 'source-map'
   config.debug = 'false'
   config.output.path = path.join(__dirname, 'dist')
-  config.vue.loaders = Object.assign(config.vue.loaders, {
+  config.vue.loaders = Object.assign({}, config.vue.loaders, {
     css: ExtractTextPlugin.extract(cssLoaders)
   })
   config.plugins = [

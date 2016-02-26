@@ -4,6 +4,24 @@
       <validator name="registerValidator">
         <form @submit.prevent="saveMerchant">
           <label class="label"
+            for="name">Merchant Name</label>
+          <input class="input"
+            type="text"
+            name="name"
+            id="name"
+            v-model="name"
+            v-validate:name="{ required: true }">
+          <map :center="{ lat: location_lat, lng: location_lng }"
+            :zoom="15"
+            @g-resize="resizeMap()"
+            style="width: 100%;height: 300px; display: block">
+            <marker :position.sync="{ lat: location_lat, lng: location_lng }"
+              :clickable="false"
+              :draggable="true"></marker>
+          </map>
+          <button @click.prevent="locate"
+            class="btn btn-primary btn-small mt2 mb2">Locate me</button>
+          <label class="label"
             for="msisdn">E-Cash Number</label>
           <input class="input"
             type="number"
@@ -13,26 +31,18 @@
             v-model="msisdn"
             v-validate:msisdn="{ required: true }">
           <label class="label"
-            for="credentialss">E-Cash Credentials</label>
+            for="ecash_credentials">E-Cash Credentials</label>
           <input class="input"
             type="password"
-            name="credentials"
-            id="credentials"
+            name="ecash_credentials"
+            id="ecash_credentials"
             v-bind:class="{ 'disabled': !ecash }"
-            v-model="credentials"
-            v-validate:credentials="{ required: true }">
+            v-model="ecash_credentials"
+            v-validate:ecash_credentials="{ required: true }">
           <button @click.prevent="checkEcash"
             class="btn btn-primary btn-small mb2">Check</button>
           <div v-bind:class="{'enabled': ecash}"
             class="ecash-validation">
-            <label class="label"
-              for="name">Merchant Name</label>
-            <input class="input"
-              type="text"
-              name="name"
-              id="name"
-              v-model="name"
-              v-validate:name="{ required: true }">
             <label class="label"
               for="username">Username</label>
             <input class="input"
@@ -65,15 +75,6 @@
               id="description"
               v-model="description"
               v-validate:description="{ required: true }"></textarea>
-            <map :center="{ lat: location_lat, lng: location_lng }"
-              :zoom="15"
-              style="width: 100%;height: 300px; display: block">
-              <marker :position.sync="{ lat: location_lat, lng: location_lng }"
-                :clickable="false"
-                :draggable="true"></marker>
-            </map>
-            <button @click.prevent="locate"
-              class="btn btn-primary btn-small mt2 mb2">Locate me</button>
             <label class="label"
               for="discount-free">Merchant Discount</label>
             <input class="input"
@@ -121,7 +122,7 @@
     location_lat: 0,
     location_lng: 0,
     ecash: false,
-    credentials: ''
+    ecash_credentials: ''
   }
 
   export default {
@@ -149,7 +150,7 @@
 
       checkEcash () {
         let payload = {
-          credentials: this.$data.credentials,
+          ecash_credentials: this.$data.ecash_credentials,
           msisdn: this.$data.msisdn
         }
         http({
@@ -173,7 +174,7 @@
           discount_premium: this.$data.discount_premium,
           location_lat: this.$data.location_lat,
           location_lng: this.$data.location_lng,
-          credentials: this.$data.credentials
+          ecash_credentials: this.$data.ecash_credentials
         }
         store.dispatch(create(payload))
         this.$data = initialData

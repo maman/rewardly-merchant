@@ -83,15 +83,19 @@
     --button-background-color: var(--blue);
     --pre-background-color: var(--silver);
   }
+
+  body {
+    background-color: #1A2A46;
+  }
 </style>
 
 <style scoped>
   @value bodyBackground from '../styles/colors.css';
-
   .application {
+    margin: 0 auto;
     min-height: 100vh;
     min-width: 400px;
-    background-color: bodyBackground;
+    max-width: 1000px;
     flex-direction: column;
     /*@media screen and (min-width: 641px) {
       flex-direction: row;

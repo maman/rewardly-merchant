@@ -48,11 +48,11 @@
     ready () {
       this.$subscribe('auth')
       if (DEBUG) console.debug(store.state)
-      checkAuth(store.state, () => {
-        this.$router.go('/')
-      }, () => {
-        console.log('loginfirst')
-      })
+      // checkAuth(store.state, () => {
+      //   this.$router.go('/')
+      // }, () => {
+      //   console.log('loginfirst')
+      // })
     },
 
     watch: {

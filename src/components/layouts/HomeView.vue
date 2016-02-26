@@ -49,6 +49,15 @@
   @value brandColor, primaryColorLight, primaryColor, bodyBackground from '../../styles/colors.css';
   @value globalPadding, topbar from '../../styles/metrics.css';
 
+  .title {
+    background-image: url('../../assets/logo.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 225px;
+    height: 80px;
+    text-indent: -999em;
+  }
+
   .sidebar {
     background-color: brandColor;
     .title {

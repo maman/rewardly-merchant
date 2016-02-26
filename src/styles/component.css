@@ -9,6 +9,7 @@
   background: bodyBackground;
   border-top-left-radius: globalRadius;
   border-top-right-radius: globalRadius;
+  overflow: hidden;
   .title-bar {
     height: calc(topbar - globalPadding);
     .title-bar--title {
@@ -21,9 +22,10 @@
     min-height: calc(100vh - topbar);
   }
   .hero {
-    background: accentColor;
+    box-shadow: 0 -1px 0 #AAA;
+    background-image: linear-gradient(#DEDEDE, #FFF);
     height: 400px;
-    color: bodyBackground;
+    color: brandColor;
   }
 }
 

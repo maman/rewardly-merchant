@@ -46,7 +46,7 @@
     methods: {
       activate () {
         if (!this.transactions.transactions.length) {
-          store.dispatch(transactionsAction(this.auth.user.member_id))
+          store.dispatch(transactionsAction(this.auth.user.id))
         }
       }
     }
