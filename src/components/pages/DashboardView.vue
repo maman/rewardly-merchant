@@ -187,11 +187,11 @@
     ready () {
       this.$subscribe('dashboard')
       if (DEBUG) console.debug(`[i]::current state: ${store.state}`)
-      // checkAuth(store.state, () => {
-      //   this.activate()
-      // }, () => {
-      //   this.$router.go('/login')
-      // })
+      checkAuth(store.state, () => {
+        this.activate()
+      }, () => {
+        this.$router.go('/login')
+      })
     },
 
     methods: {
