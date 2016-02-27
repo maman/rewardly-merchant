@@ -114,7 +114,7 @@
     username: '',
     name: '',
     msisdn: '',
-    images: '',
+    image: '',
     password: '',
     description: '',
     discount_free: '',
@@ -141,6 +141,8 @@
     methods: {
       locate () {
         getLocation(({ coords }) => {
+          // this.location_lat = -6.224618
+          // this.location_lng = 106.8077216
           this.location_lat = coords.latitude
           this.location_lng = coords.longitude
         }, (error) => {
@@ -167,7 +169,7 @@
           username: this.$data.username,
           name: this.$data.name,
           msisdn: this.$data.msisdn,
-          images: this.$data.images,
+          image: this.$data.image,
           password: md5(this.$data.password),
           description: this.$data.description,
           discount_free: this.$data.discount_free,
