@@ -1,6 +1,7 @@
 <template>
   <div class="main flex flex-wrap flex-column px2">
     <h1>Profile</h1>
+    <h2>{{ merchant.merchant.msisdn }}</h2>
     <validator name="profileValidator">
       <form @submit.prevent="performEdit"
         novalidate>
@@ -11,6 +12,15 @@
           name="name"
           id="name"
           v-model="merchant.merchant.name">
+        <map :center="{lat: merchant.merchant.location_lat, lng: merchant.merchant.location_lng}"
+          :zoom="15"
+          style="width: 100%;height: 300px; display: block">
+          <marker :position.sync="{lat: merchant.merchant.location_lat, lng: merchant.merchant.location_lng}"
+            :clickable="false"
+            :draggable="true"></marker>
+        </map>
+        <button @click.prevent="locate"
+          class="btn btn-primary btn-small mt2 mb2">Locate me</button>
         <label class="label"
           for="description">Merchant Description</label>
         <textarea class="textarea"
@@ -18,15 +28,6 @@
           name="description"
           id="description"
           v-model="merchant.merchant.description"></textarea>
-        <map :center="merchant.merchant.location"
-          :zoom="15"
-          style="width: 100%;height: 300px; display: block">
-          <marker :position.sync="merchant.merchant.location"
-            :clickable="false"
-            :draggable="true"></marker>
-        </map>
-        <button @click.prevent="locate"
-          class="btn btn-primary btn-small mt2 mb2">Locate me</button>
         <label class="label"
           for="discount-free">Merchant Discount</label>
         <input class="input"
@@ -89,8 +90,8 @@
 
       locate () {
         getLocation(({ coords }) => {
-          this.merchant.merchant.location.lat = coords.lat
-          this.merchant.merchant.location.lng = coords.lng
+          this.merchant.merchant.location_lat = coords.lat
+          this.merchant.merchant.location_lng = coords.lng
         }, (error) => {
           if (DEBUG) console.warn(`[e]::cannot get location from users ${error.message}`)
         })

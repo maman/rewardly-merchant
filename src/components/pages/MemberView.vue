@@ -6,14 +6,22 @@
     <div class="content">
       <div class="main">
         <div class="main--content">
-          <div v-for="member in members.members"
-            class="member card">
-            <p>{{ member.real_name }}</p>
-            <p>{{ member.type }}</p>
-            <ul>
-              <li><a href>Detail</a></li>
-            </ul>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Member Name</th>
+                <th>Latest Transaction</th>
+                <th>Member type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="member in members.members">
+                <td>{{ member.real_name }}</td>
+                <td>{{ member.latest_transaction }}</td>
+                <td>{{ member.type }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -53,3 +61,13 @@
     }
   }
 </script>
+
+<style scoped>
+  table {
+    border-top: 1px solid #AAA;
+    background-image: linear-gradient(#DEDEDE, #FFF);
+    thead tr {
+      border-bottom: 1px solid #AAA;
+    }
+  }
+</style>

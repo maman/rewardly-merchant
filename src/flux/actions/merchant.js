@@ -1,4 +1,5 @@
 import merchantApi from 'datasources/merchant'
+import { memberLists, transactionLists } from 'mocks/server'
 
 export const MERCHANT_CREATE_REQUEST = 'MERCHANT_CREATE_REQUEST'
 export const MERCHANT_CREATE_SUCCESS = 'MERCHANT_CREATE_SUCCESS'
@@ -146,11 +147,12 @@ export function transactions (id) {
     dispatch(transactionsLoading())
     merchantApi.getTransactions(id)
       .then(({ data }) => {
-        dispatch(transactionsLoaded(data.data))
-        // dispatch(transactionsLoaded(transactionLists.transactions)) /** TODO: mocks */
+        // dispatch(transactionsLoaded(data.data))
+        dispatch(transactionsLoaded(transactionLists.transactions)) /** TODO: mocks */
       })
       .catch((error) => {
-        dispatch(transactionsFailed(error))
+        // dispatch(transactionsFailed(error))
+        dispatch(transactionsLoaded(transactionLists.transactions)) /** TODO: mocks */
       })
   }
 }
@@ -186,8 +188,8 @@ export function members (id) {
     dispatch(membersLoading())
     merchantApi.getMembers(id)
       .then(({ data }) => {
-        dispatch(membersLoaded(data.data))
-        // dispatch(membersLoaded(memberLists.members)) /** TODO: mocks */
+        // dispatch(membersLoaded(data.data))
+        dispatch(membersLoaded(memberLists.members)) /** TODO: mocks */
       })
       .catch((error) => {
         dispatch(membersFailed(error))

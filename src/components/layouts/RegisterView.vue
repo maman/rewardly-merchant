@@ -141,8 +141,8 @@
     methods: {
       locate () {
         getLocation(({ coords }) => {
-          // this.location_lat = -6.224618
-          // this.location_lng = 106.8077216
+          // this.location_lat = -6.2313722
+          // this.location_lng = 106.8068344
           this.location_lat = coords.latitude
           this.location_lng = coords.longitude
         }, (error) => {

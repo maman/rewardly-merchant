@@ -11,7 +11,7 @@
               :data="charts.chart1.config"
               :options="charts.chart1.options"></graph>
             <div class="text">
-              <span class="number">42</span>
+              <span class="number">12</span>
               <span class="explanation">member count</span>
             </div>
           </div>
@@ -25,7 +25,7 @@
               :data="charts.chart2.config"
               :options="charts.chart2.options"></graph>
             <div class="text">
-              <span class="number">78</span>
+              <span class="number">20</span>
               <span class="explanation">transaction count</span>
             </div>
           </div>

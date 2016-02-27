@@ -6,13 +6,24 @@
     <div class="content">
       <div class="main">
         <div class="main--content">
-          <div v-for="transaction in transactions.transactions"
-            class="transaction card">
-            <p>{{ transaction.member_name }}</p>
-            <p>{{ transaction.description }}</p>
-            <p>{{ transaction.amount }}</p>
-            <p>{{ transaction.datetime }}</p>
-          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Member Name</th>
+                <th>Transaction Date</th>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="transaction in transactions.transactions">
+                <td>{{ transaction.member_name }}</td>
+                <td>{{ transaction.datetime }}</td>
+                <td>{{ transaction.type }}</td>
+                <td>{{ transaction.amount }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -52,3 +63,13 @@
     }
   }
 </script>
+
+<style scoped>
+  table {
+    border-top: 1px solid #AAA;
+    background-image: linear-gradient(#DEDEDE, #FFF);
+    thead tr {
+      border-bottom: 1px solid #AAA;
+    }
+  }
+</style>
