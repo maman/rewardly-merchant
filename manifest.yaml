@@ -1,0 +1,6 @@
+---
+applications:
+- name: rewardly-merchant
+  memory: 64M
+  path: dist/
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git

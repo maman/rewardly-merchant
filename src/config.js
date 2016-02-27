@@ -1,6 +1,7 @@
 // const baseUrl = 'http://api.rewardly.com'
 // const baseUrl = 'http://private-c8d27-rewardly.apiary-mock.com'
-const baseUrl = 'http://172.17.34.49:8000'
+// const baseUrl = 'http://172.17.34.49:8000'
+const baseUrl = 'http://rewardly.mybluemix.com'
 
 let endpoint = Object.freeze({
   auth: `${baseUrl}/auth`,
